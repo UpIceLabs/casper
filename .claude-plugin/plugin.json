@@ -6,8 +6,8 @@
   "author": {
     "name": "Ronnie Pinnell"
   },
-  "homepage": "https://github.com/ronniepinnell/casper",
-  "repository": "https://github.com/ronniepinnell/casper",
+  "homepage": "https://github.com/UpIceLabs/casper",
+  "repository": "https://github.com/UpIceLabs/casper",
   "license": "MIT",
   "keywords": ["judgment", "verification", "hooks", "skills", "verdict-ledger", "claim-evidence"]
 }

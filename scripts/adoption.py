@@ -5,7 +5,7 @@ The casper roadmap declares adoption kill-gates (e.g. refute-action: <3
 external repos within 90 days). A gate nobody measures is decoration — this
 script IS the measurement. Zero-LLM, gh CLI.
 
-Usage: python3 scripts/adoption.py [--owner ronniepinnell]
+Usage: python3 scripts/adoption.py [--owner UpIceLabs]
 """
 import argparse
 import json
@@ -18,7 +18,7 @@ def gh_json(args):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--owner", default="ronniepinnell")
+    ap.add_argument("--owner", default="UpIceLabs")
     a = ap.parse_args()
 
     # 1. external repos using refute-action (code search)
