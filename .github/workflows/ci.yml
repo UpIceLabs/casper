@@ -4,10 +4,15 @@ on:
     branches: [main]
   pull_request:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   hooks:
     name: Hook regression matrix
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - name: Run hook test matrix
@@ -16,6 +21,7 @@ jobs:
   counts:
     name: README counts match the tree
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - name: A drifting README count fails the PR
@@ -24,6 +30,7 @@ jobs:
   evals:
     name: Skill evals (verdict-line output contracts)
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - name: Skills must prove their documented verdict-line contract
@@ -32,6 +39,7 @@ jobs:
   skills-lint:
     name: Skills lint (self-containedness + frontmatter)
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - name: Lint skills
@@ -40,6 +48,7 @@ jobs:
   installer:
     name: Install/uninstall round-trip
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - name: Round-trip must leave target byte-identical
